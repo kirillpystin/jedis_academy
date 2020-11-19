@@ -1,0 +1,46 @@
+{% extends "../wrapper.html" %}
+
+{% block content %}
+<h2 align='center'>Тест</h2>
+  {% for i in pk %}
+  <form class="form-horizontal" method="POST" action="{% url 'test' pk=pk %}" >
+  {% endfor %}
+  {% csrf_token %}
+  <div class="form-group">
+      <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Вопрос</th>
+                    <th scope="col">Ответ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for i in questions %}
+                  <tr>
+                    <th scope="row" name="id" id="{{i.id}}">{{i.id}}</th>
+                    <td>{{i.text}}</td>
+                    <td>
+                        <select class="form-control" name='polls'>
+                        <option value='True'>Да</option>
+                        <option value='False'>Нет</option>
+                        </select>
+                    </td>
+                  </tr>
+                  <input name='question' value="{{i.id}}" hidden="true">
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+              <input type="submit" class="btn btn-primary" value="Отправить">
+              <input type="reset" class="btn btn-default" value="Очистить форму">
+            </div>
+          </div>
+          </form>
+
+{% endblock %}

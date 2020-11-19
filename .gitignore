@@ -1,0 +1,9 @@
+*.sqlite3
+*.env
+*.pyc
+__pycache__/
+virtual_env/
+*.py[cod]
+*.yaml
+.isort.cfg
+.pre-commit-config.yaml

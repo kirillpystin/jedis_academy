@@ -1,0 +1,31 @@
+{% extends "../wrapper.html" %}
+
+{% block content %}
+<h2 align='center'>Статистика</h2>
+
+  <div class="form-group">
+    <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Имя</th>
+                  <th scope="col">Планета</th>
+                  <th scope="col">Количество падаванов</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for i in jedis %}
+                <tr>
+                  <th scope="row" name="id" id="{{i.id}}">{{i.id}}</th>
+                  <td>{{ i.jedi__name }}</td>
+                  <td>{{ i.jedi__planet__name }}</td>
+                  <td>{{ i.count_padawan }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+    </div>
+  </div>
+
+{% endblock %}

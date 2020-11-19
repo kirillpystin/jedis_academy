@@ -1,0 +1,28 @@
+{% extends "../wrapper.html" %}
+
+{% block content %}
+  <h2 align='center'>Страница Джедая</h2>
+  <form class="form-horizontal" method="POST" action="{% url 'get_jedi_page'%}" >
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label class="control-label col-xs-3" for="firstName">Выберете джедая в списке:</label>
+      <div class="col-xs-9">
+        <select class="form-control" id="exampleFormControlSelect1" name='id'>
+          {% for i in jedis %}
+            <option value="{{i.id}}">{{i}}</option>
+          {% endfor %}
+          </select>
+      </div>
+    </div>
+
+    </div>
+    <div class="form-group">
+      <div class="col-xs-offset-3 col-xs-9">
+        <input type="submit" class="btn btn-primary" value="Отправить">
+        <input type="reset" class="btn btn-default" value="Очистить форму">
+      </div>
+    </div>
+  </form>
+
+{% endblock %}

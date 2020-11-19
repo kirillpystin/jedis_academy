@@ -1,0 +1,37 @@
+{% extends "../wrapper.html" %}
+
+{% block content %}
+<h2 align='center'>Результаты теста: {{candidate}}</h2>
+<form class="form-horizontal" method="POST" action="{% url 'add' candidate.id %}" >
+  {% csrf_token %}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Вопрос</th>
+          <th scope='col' >Ответ</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i,v in answers.items %}
+        <tr>
+        <th scope="row">{{i.id}}</th>
+          <td>{{i}}</td>
+          <td>{{v}}</td></a>
+        </tr>
+            {% empty %}
+        <td>Кандидат не отвечал на вопросы</td>
+            {% endfor %}
+      </tbody>
+    </table>
+      </div>
+        <div class="form-group">
+          <div class="col-xs-offset-3 col-xs-9">
+            <input type='hidden' name='key' value="{{pk}}"/>
+            <input type="submit" class="btn btn-primary" value="Принять">
+            <a href="{% url 'jedi_page' pk%}"><input type='button' class="btn btn-default" value="Назад"></a>
+          </div>
+        </div>
+</form>
+
+{% endblock %}

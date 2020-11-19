@@ -1,0 +1,48 @@
+{% extends "../wrapper.html" %}
+
+{% block content %}
+<h2 align='center'>Добавить кандидата</h2>
+<form class="form-horizontal" method="POST" action='/new/' >
+  {% csrf_token %}
+
+  <div class="form-group">
+    <label class="control-label col-xs-3" for="firstName">Имя:</label>
+    <div class="col-xs-9">
+      <input type="text" name='name' class="form-control" id="firstName" placeholder="Введите имя">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-xs-3" for="lastName">Возраст:</label>
+    <div class="col-xs-9">
+      <input type="text" name="old" class="form-control" id="lastName" placeholder="Введие заголовок">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-xs-3" for="planet">Планета:</label>
+    <div class="col-xs-9">
+      <select class="form-control" name='planet' required>
+        {% for i in planets %}
+          <option value="{{i.id}}">{{i}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-xs-3">Email</label>
+    <div class="col-xs-9">
+      <input type="email" class="form-control" name="email" placeholder="Введите тэги через запятую" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-offset-3 col-xs-9">
+      <input type="submit" class="btn btn-primary" value="Отправить">
+      <input type="reset" class="btn btn-default" value="Очистить форму">
+    </div>
+  </div>
+</form>
+
+{% endblock %}
